@@ -1,0 +1,414 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Adjust based on header height */
+}
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #942121;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+/* Logo and Website Name */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 60px; /* Adjust logo size */
+    height: auto;
+}
+
+.website-name {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 10px;
+    color: white;
+}
+
+/* Navigation */
+nav {
+    flex-grow: 1;
+    text-align: right;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap; /* Prevents stacking */
+}
+
+nav ul li {
+    margin: 0 10px; /* Reduce spacing */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+    white-space: nowrap; /* Keeps items in one line */
+}
+
+nav ul li a:hover {
+    color: #c9b821;
+}
+
+/* Fix for smaller screens */
+@media (max-width: 768px) {
+    nav ul {
+        font-size: 14px; /* Reduce font size */
+        gap: 5px; /* Reduce gap */
+    }
+
+    nav ul li {
+        margin: 0 5px; /* Reduce spacing */
+    }
+
+    .logo {
+        width: 50px; /* Slightly smaller logo */
+    }
+
+    .website-name {
+        font-size: 16px; /* Adjust text size */
+    }
+}
+section {
+    padding-top: 80px; /* Adjust this based on header height */
+    margin-top: -80px; /* Negative margin prevents extra space */
+}
+
+/* Slideshow Section */
+.slideshow-container {
+    display: flex; /* Initially hidden, shown only on Home click */
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 20%;
+}
+
+/* Slide Content */
+.slide {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.active {
+    display: flex;
+}
+
+/* Slide Layout */
+.slide-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+.slide img {
+    width: 50%;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.description {
+    width: 45%;
+    text-align: left;
+    padding: 20px;
+}
+
+.description h2 {
+    font-size: 32px;
+    color: #8B0000;
+}
+
+.description p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 100;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+/* Welcome Section (Same Height as Slides) */
+#welcome-section {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 95vh; /* Same as slides */
+    background-color: #efe7e7;
+    color: rgb(8, 7, 7);
+}
+
+.welcome-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.welcome-content h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    animation: fadeIn 2s;
+}
+
+.welcome-content p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    animation: fadeIn 3s;
+}
+
+.explore-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #9d3125;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.explore-btn:hover {
+    background-color: #c8bf58;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Popular Dishes Section */
+.popular-dishes {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fff5e6;
+}
+
+.popular-dishes h2 {
+    font-size: 32px;
+    color: #8B0000;
+    margin-bottom: 20px;
+}
+
+/* Grid Container */
+.dishes-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns in full view */
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Individual Dish Card */
+.dish-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.dish-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.dish-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #8B0000;
+}
+
+.dish-card:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+    .dishes-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .dishes-container {
+        grid-template-columns: repeat(3, 1fr); /* Still 3 per row */
+    }
+
+    .dish-card:last-child {
+        grid-column: span 3; /* Last row centers the last item */
+        justify-self: center;
+        width: 50%; /* Adjust width for centering */
+    }
+}
+
+@media (max-width: 480px) {
+    .dishes-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on small screens */
+    }
+
+    .dish-card:last-child {
+        grid-column: span 2; /* Centers last item */
+        justify-self: center;
+        width: 60%;
+    }
+}
+/* Form Section */
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh; /* Same as slideshow height */
+    background-color: #fff5e6;
+}
+
+/* Form Container */
+.form-container {
+    background: white;
+    justify-content: center;
+    width: 55%;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.tab-link {
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.tab-link.active {
+    background-color: #d7875e;
+    color: black;
+}
+
+/* Forms */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+h2 {
+    color: #8B0000;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/* Buttons */
+.form-btn {
+    background-color: #8B0000;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-btn:hover {
+    background-color: #FFD700;
+    color: black;
+}
+/* Footer Styling */
+footer {
+    background-color: #d2afaf;
+    color: rgb(29, 26, 26);
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Footer Content Layout */
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste of Tamil</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const slides = document.querySelectorAll(".slide");
+            let slideIndex = 0;
+        
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.style.display = i === index ? "flex" : "none"; // Show only the active slide
+                });
+            }
+        
+            function changeSlide(n) {
+                slideIndex = (slideIndex + n + slides.length) % slides.length;
+                showSlide(slideIndex);
+            }
+        
+            // Auto-slide every 5 seconds
+            setInterval(() => changeSlide(1), 5000);
+        
+            document.querySelector(".prev").addEventListener("click", function () {
+                changeSlide(-1);
+            });
+        
+            document.querySelector(".next").addEventListener("click", function () {
+                changeSlide(1);
+            });
+        
+            // Ensure the first slide is shown when page loads
+            showSlide(slideIndex);
+        });
+        function openTab(evt, tabName) {
+        let tabContents = document.querySelectorAll(".tab-content");
+        let tabLinks = document.querySelectorAll(".tab-link");
+
+        tabContents.forEach(tab => tab.classList.remove("active"));
+        tabLinks.forEach(link => link.classList.remove("active"));
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+        }
+
+        </script>
+        
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Taste of Tamil Logo" class="logo">
+            <span class="website-name">Taste of Tamil</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#welcome-section">Home</a></li>
+                <li><a href="#popular-dishes">Menu</a></li>
+                <li><a href="#register">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+        <!-- Welcome Section (Added Above Slideshow) -->
+    <section id="welcome-section">
+        <div class="welcome-content">
+            <h1>“Bringing Tradition to Your Table”</h1>
+            <p>
+                Taste the rich flavors of Tamil Nadu from the comfort of your home!  
+                Our platform connects you with authentic, home-cooked traditional dishes, ensuring freshness, affordability, and the taste of love in every bite.
+            </p>
+            <a href="#popular-dishes" class="explore-btn">View More Menu</a>
+        </div>
+    </section>
+
+    <section id="home" class="slideshow-container">
+        <div class="slide active">
+            <div class="slide-content">
+                <img src="images/filtercoffee.png" alt="Filter Coffee">
+                <div class="description">
+                    <h2>Authentic Filter Coffee</h2>
+                    <p>Experience the rich aroma and strong flavor of traditional South Indian Filter Coffee. A perfect blend of freshly ground coffee beans and frothy milk for a refreshing start to your day.</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="slide">
+            <div class="slide-content">
+                <img src="images/paniyaram.png" alt="Panniyaram">
+                <div class="description">
+                    <h2>Delicious Kuzhi Panniyaram</h2>
+                    <p>Soft, crispy, and flavorful, our Kuzhi Panniyaram is made from fermented rice and urad dal batter, served with a variety of chutneys. A must-try South Indian delicacy!</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="slide">
+            <div class="slide-content">
+                <img src="images/sweet panniyaram.png" alt="Sweet Panniyaram">
+                <div class="description">
+                    <h2>Sweet Panniyaram</h2>
+                    <p>Indulge in the rich taste of our Sweet Panniyaram, made with jaggery and coconut. A perfect blend of crispy outside and soft inside, satisfying your sweet tooth.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Navigation Buttons -->
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </section>
+    <section id="popular-dishes" class="popular-dishes">
+        <h2>Popular Dishes</h2>
+        <div class="dishes-container">
+            <div class="dish-card">
+                <img src="images/halwa.png" alt="Halwa">
+                <h3>Halwa</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/kesari.png" alt="Kesari">
+                <h3>Kesari</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/laddu.png" alt="Laddu">
+                <h3>Laddu</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/puttu.png" alt="Puttu">
+                <h3>Puttu</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/somos.png" alt="Somas">
+                <h3>Somas</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/mysorepak.png" alt="Mysore Pak">
+                <h3>Mysore Pak</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/jamun.png" alt="Jamun">
+                <h3>Jamun</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/achumuruku.png" alt="Achumuruku">
+                <h3>Achumuruku</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/thattai.png" alt="Tattai">
+                <h3>Tattai</h3>
+            </div>
+            <div class="dish-card">
+                <img src="images/panipuri.png" alt="Pani Puri">
+                <h3>Pani Puri</h3>
+            </div>
+        </div>
+    </section>
+    <section id="register-login" class="form-section">
+        <div class="form-container">
+    
+            <!-- Registration Form -->
+            <div id="register" class="tab-content active">
+                <h2>Register to Order</h2>
+                <form action="register.php" method="">
+                    <input type="text" name="full_name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="password" name="password" placeholder="Create Password" required>
+                    <input type="password" name="Confirm_password" placeholder="Confirm Password" required>
+                    <button type="submit" class="form-btn">Register</button>
+                    <div class="tabs">
+                        <button class="tab-link" onclick="openTab(event, 'login')">Login</button>
+                    </div>
+                </form>
+            </div>
+
+    
+            <!-- Login Form -->
+            <div id="login" class="tab-content">
+                <h2>Login to Order</h2>
+                <form>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="form-btn">Login</button>
+                </form>
+            </div>
+        </div>
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p><strong>📍 Address:</strong> Pochampalli,Krishnagiri,Tamilnadu</p>
+            <p><strong>📞 Phone:</strong> +91 99659 56117</p>
+            <p><strong>📧 Email:</strong> support@tasteoftamil.com</p>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>Taste of Tamil</h3>
+                <p>Bringing you the authentic taste of South Indian delicacies with love and tradition.</p>
+                <p>&copy; 2025 Taste of Tamil. All Rights Reserved.</p>
+    </footer>
+    
+</body>
+</html>
